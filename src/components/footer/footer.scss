@@ -1,0 +1,13 @@
+@use '../../App.scss';
+$backgroundColor: #ebebe3;
+$headerColor: #2b2b28;
+
+footer {
+    // background: darken($backgroundColor, 50);
+    background: lighten($headerColor, 10);
+    color: lighten($backgroundColor, 8);
+    border-top: 1px solid #eee;
+    padding: 1em 3em;
+    margin: 0;
+    text-align: center;
+  }
