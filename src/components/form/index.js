@@ -1,31 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './form.scss';
 
-//     this.props.handleApiCall(formData);
-//   }
-
 export default function Form(props) {
+  let {handleApiCall} = props;
+  let [method, setMethod] = useState('get');
   let handleSubmit = (e) => {
     e.preventDefault();
     let formData = {
-      method: 'GET',
-      url: 'https://pokeapi.co/api/v2/pokemon',
+      method: method,
+      url: e.target.url.value,
+      body: e.target.body.value
     };
-    props.handleApiCall(formData);
+    console.log(formData);
+    handleApiCall(formData);
   }
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form data-testid='form-submit' onSubmit={handleSubmit}>
         <label className='inputLabel'>
           <span>URL: </span>
           <input name='url' type='text' />
+          <textarea name='body' type='text'>JSON body</textarea>
           <button type='submit'>GO!</button>
         </label>
         <label className='methods'>
-          <span id='get'>GET</span>
-          <span id='post'>POST</span>
-          <span id='put'>PUT</span>
-          <span id='delete'>DELETE</span>
+          <span onClick={()=>{setMethod('get')}} id='get'>GET</span>
+          <span onClick={()=>{setMethod('post')}} id='post'>POST</span>
+          <span onClick={()=>{setMethod('put')}} id='put'>PUT</span>
+          <span onClick={()=>{setMethod('delete')}} id='delete'>DELETE</span>
         </label>
       </form>
     </>
