@@ -25,3 +25,15 @@ The goal was to setup the basic scaffolding of the application, with intent bein
 #### Sandbox
 
 [Here](https://codesandbox.io/s/funny-darwin-pub7h?file=/src/App.js)
+
+### Phase 2 <-Lab26-> - The useState() Hook
+
+The goal was to receive user input in preparation of connecting to live APIs, using the useState() hook in our functional components.
+
+### Tests
+
+![lab26-uml](./src/images/testResults.PNG)
+
+### GitHub pages link
+
+[Here](https://hasnaa38.github.io/resty/)
