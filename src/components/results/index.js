@@ -2,9 +2,10 @@ import React from 'react';
 import './results.scss';
 
 export default function Results(props){
+  let {data} = props;
   return(
     <section>
-      <pre>{props.data? JSON.stringify(props.data, undefined, 2) : null}</pre>
+      <pre data-testid='submit-result' >{data? JSON.stringify(data, undefined, 2) : 'loading'}</pre>
     </section>
   );
 }

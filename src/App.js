@@ -1,44 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import './App.scss';
 import Header from './components/header/index';
 import Footer from './components/footer/index';
 import Form from './components/form/index';
 import Results from './components/results/index';
 
-class App extends React.Component {
+export default function App() {
+  let [data, setData] = useState(null);
+  let [requestParams, setRequestParams] = useState({});
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-      requestParams: {},
-    };
-  }
-
-  callApi = (requestParams) => {
+  let callApi = async (requestParams) => {
+    setRequestParams(requestParams);
+    let newResponse = {};
+    let newCount = 0;
+    await axios.get(`${requestParams.url}`).then(response => {
+      newResponse = {
+        headers: response.headers,
+        body: response.data
+      };
+      newCount = newResponse.body.length;
+    });
     // mock output
     const data = {
-      count: 2,
-      results: [
-        {name: 'fake thing 1', url: 'http://fakethings.com/1'},
-        {name: 'fake thing 2', url: 'http://fakethings.com/2'},
-      ],
+      count: newCount,
+      results: newResponse,
     };
-    this.setState({data, requestParams});
+    setData(data);
   }
 
-  render() {
-    return (
-      <React.Fragment>
-        <Header />
-        <div className='textDev'>Request Method: {this.state.requestParams.method}</div>
-        <div className='textDev'>URL: {this.state.requestParams.url}</div>
-        <Form handleApiCall={this.callApi} />
-        <Results data={this.state.data} />
-        <Footer />
-      </React.Fragment>
-    );
-  }
+  return (
+    <React.Fragment>
+      <Header />
+      <div data-testid='method' className='textDev'>Request Method: {requestParams.method}</div>
+      <div className='textDev'>URL: {requestParams.url}</div>
+      <Form handleApiCall={callApi} />
+      <Results data={data} />
+      <Footer />
+    </React.Fragment>
+  );
 }
-
-export default App;
