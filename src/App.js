@@ -9,19 +9,29 @@ import Results from './components/results/index';
 export default function App() {
   let [data, setData] = useState(null);
   let [requestParams, setRequestParams] = useState({});
+  let [goFlag, setGoFlag] = useState(false);
+  let [resultFlag, setResultFlag] = useState(false);
 
   useEffect(() => {
     let responseFunction = async () => {
+      setResultFlag(false);
+      setGoFlag(requestParams.url); // when its empty it undefined: false, when it has a value=go clicked: true
       let newResponse = {};
       let newCount = 0;
-      await axios.get(`${requestParams.url}`).then(response => {
-        console.log(response);
+      let config = {
+        method: `${requestParams.method}`,
+        baseURL: `${requestParams.url}`,
+        body: `${requestParams.body}`
+      }
+      await axios(config).then(response => {
+        setGoFlag(false);
+        setResultFlag(true);
         newResponse = {
           headers: response.headers,
           body: response.data
-        };
-        newCount = newResponse.body.length;
-      });
+          };
+          newCount = newResponse.body.length;
+      })
       // mock output
       const data = {
         count: newCount,
@@ -39,10 +49,11 @@ export default function App() {
   return (
     <React.Fragment>
       <Header />
-      <div data-testid='method' className='textDev'>Request Method: {requestParams.method}</div>
-      <div className='textDev'>URL: {requestParams.url}</div>
-      <Form handleApiCall={callApi} />
-      <Results data={data} />
+      <Form handleApiCall={callApi}/>
+      {(goFlag || resultFlag) && <div data-testid='method' className='textDev'>Request Method: {requestParams.method}</div>}
+      {(goFlag || resultFlag) && <div className='textDev'>URL: {requestParams.url}</div>}
+      {(goFlag || resultFlag) && <div className='textDev'>Body: {requestParams.body}</div>}
+      <Results data={data} resultFlag={resultFlag} goFlag={goFlag}/>
       <Footer />
     </React.Fragment>
   );
