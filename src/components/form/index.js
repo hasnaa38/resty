@@ -20,17 +20,17 @@ export default function Form(props) {
   }
 
   let handleClick=(e)=>{
-    document.getElementById(method).style.background = '#4a4a48';
-    e.target.style.background = 'blue';
+    document.getElementById(method).style.background = '#7a4949';
+    e.target.style.background = '#395e64';
   }
 
   return (
     <>
-      <form data-testid='form-submit' onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label className='inputLabel'>
-          <span>URL: </span>
-          <input name='url' type='text' />
-          <button type='submit'>GO!</button>
+          <span data-testid='URL'>URL: </span>
+          <input data-testid='URLinput' name='url' type='text' />
+          <button  data-testid='goButton' type='submit'>GO!</button>
         </label>
         <label className='methods'>
           <span onClick={(e)=>{setMethod('GET'); handleClick(e)}} id='GET'>GET</span>

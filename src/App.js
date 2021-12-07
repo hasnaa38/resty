@@ -29,8 +29,9 @@ export default function App() {
         newResponse = {
           headers: response.headers,
           body: response.data
-          };
-          newCount = newResponse.body.length;
+        };
+        newCount = newResponse.body.length;
+        console.log(response);
       })
       // mock output
       const data = {

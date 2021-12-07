@@ -1,4 +1,8 @@
-$backgroundColor: #ebebe3;
+$backgroundColor: #161616;
+$headerColor: #131313;
+$darkPink: #7a4949;
+$blue: #395e64;
+$white: #fff;
 
 html, body {
   height: 100%;
@@ -11,18 +15,20 @@ body {
   height: 100%;
   font-family: 'Source Sans Pro', sans-serif;
   
+  
   #root {
     display: flex;
     flex-direction: column;
     height: 100%;
     overflow-x: hidden;
   }
-
+  
   .textDev{
     font-size: 15px;
     margin-left: 15px;
     padding-bottom: 10px;
     font-size: 16px;
+    color: $white;
   }
 
   // footer {
