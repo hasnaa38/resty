@@ -1,12 +1,11 @@
 @use '../../App.scss';
-$backgroundColor: #ebebe3;
-$headerColor: #2b2b28;
+$headerColor: #131313;
 
 header {
     // background: darken($backgroundColor, 75);
     background: $headerColor;
     border-bottom: 1px solid #eee;
-    color: lighten($backgroundColor, 8);
+    color: lighten(#ebebe3, 8);
     padding: 0;
     padding-left: 15px;
     margin: 0 0 30px 0;

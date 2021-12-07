@@ -1,7 +1,7 @@
-$backgroundColor: #ebebe3;
-$headerColor: #2b2b28;
-$gray: #4a4a48;
-$pink: #c19898;
+$backgroundColor: #161616;
+$headerColor: #131313;
+$darkPink: #7a4949;
+$blue: #395e64;
 $white: #fff;
 $radius: 40%;
 
@@ -18,7 +18,7 @@ form {
       display: flex;
       gap: 10px;
       span{
-        color: $headerColor;
+        color: $white;
         font-weight: 700;
         font-size: 18px;
         padding: 5px 0;
@@ -32,7 +32,7 @@ form {
       }
       button{
         color: $white;
-        background: $headerColor;
+        background: $blue;
         padding: 5px 15px;
         font-size: 15px;
         font-weight: 600;
@@ -41,7 +41,7 @@ form {
         cursor: pointer;
         letter-spacing: 0.05em;
         &:hover {
-          background: lighten($headerColor, 10);
+          background: lighten($blue, 10);
         }
       }
     }
@@ -53,13 +53,13 @@ form {
         cursor: pointer;
         font-size: 14px;
         padding: .25rem .5rem;
-        background: $gray;
+        background: $darkPink;
         color: $white;
         border-radius: 4px;
         border: 0;
 
         &:hover {
-          background: lighten($gray, 20);
+          background: lighten($darkPink, 20);
         }
       }
     }

@@ -6,7 +6,7 @@ let JSONPrettyMon = require('react-json-pretty/dist/acai')
 export default function Results(props){
   let {data, goFlag, resultFlag} = props;
   return(
-    <section id="results">
+    <section data-testid='result' id="results">
       {goFlag && <div class="dots-4"></div>}
       {resultFlag && <JSONPretty id="json-pretty" data={data} theme={JSONPrettyMon}></JSONPretty>}
       {/* {resultFlag && <pre data-testid='submit-result' >{data? JSON.stringify(data, undefined, 2) : null}</pre>} */}

@@ -37,3 +37,27 @@ The goal was to receive user input in preparation of connecting to live APIs, us
 ### GitHub pages link
 
 [Here](https://hasnaa38.github.io/resty/)
+
+### Phase 3 <-Lab26-> - The useEffect() Hook
+
+The goal was to connect RESTy with actual APIs, running live requests.
+
+### Application Flow
+
+1. User enters an API URL
+2. Chooses a REST Method (GET, POST, PUT, DELETE) and provides a body if needed
+3. Clicks the “Go” button
+4. Application fetches data from the URL given, with the method specified
+5. Displays the response headers and results separately in JSON format
+
+### GitHub pages link
+
+[Here](https://hasnaa38.github.io/resty/)
+
+I have been using this API for testing: [anapioficeandfire](https://anapioficeandfire.com/api/houses) and this to test other REST methods: [reqres](https://reqres.in/)
+
+Some results:
+
+![get](./src/images/get.PNG)
+![post](./src/images/post.PNG)
+![delete](./src/images/delete.PNG)
