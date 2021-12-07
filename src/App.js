@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.scss';
 import Header from './components/header/index';
@@ -10,23 +10,30 @@ export default function App() {
   let [data, setData] = useState(null);
   let [requestParams, setRequestParams] = useState({});
 
-  let callApi = async (requestParams) => {
-    setRequestParams(requestParams);
-    let newResponse = {};
-    let newCount = 0;
-    await axios.get(`${requestParams.url}`).then(response => {
-      newResponse = {
-        headers: response.headers,
-        body: response.data
+  useEffect(() => {
+    let responseFunction = async () => {
+      let newResponse = {};
+      let newCount = 0;
+      await axios.get(`${requestParams.url}`).then(response => {
+        console.log(response);
+        newResponse = {
+          headers: response.headers,
+          body: response.data
+        };
+        newCount = newResponse.body.length;
+      });
+      // mock output
+      const data = {
+        count: newCount,
+        results: newResponse,
       };
-      newCount = newResponse.body.length;
-    });
-    // mock output
-    const data = {
-      count: newCount,
-      results: newResponse,
-    };
-    setData(data);
+      setData(data);
+    }
+    responseFunction();
+  }, [requestParams]);
+
+  let callApi = (requestParams) => {
+    setRequestParams(requestParams);
   }
 
   return (
