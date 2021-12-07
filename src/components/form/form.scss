@@ -40,7 +40,7 @@ form {
         border: 0;
         cursor: pointer;
         letter-spacing: 0.05em;
-        &:hover, &.active {
+        &:hover {
           background: lighten($headerColor, 10);
         }
       }
@@ -58,8 +58,8 @@ form {
         border-radius: 4px;
         border: 0;
 
-        &:hover, &.active {
-          background: lighten($gray, 10);
+        &:hover {
+          background: lighten($gray, 20);
         }
       }
     }
