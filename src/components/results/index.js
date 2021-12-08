@@ -1,7 +1,7 @@
 import React from 'react';
 import './results.scss';
 import JSONPretty from 'react-json-pretty';
-let JSONPrettyMon = require('react-json-pretty/dist/acai')
+let JSONPrettyMon = require('react-json-pretty/dist/acai');
 
 export default function Results(props){
   let {data, goFlag, resultFlag} = props;

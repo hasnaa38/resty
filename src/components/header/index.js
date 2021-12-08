@@ -6,6 +6,11 @@ export default function Header() {
   return (
     <header>
       <h1>RESTy</h1>
+
+      {/* <ul>
+        <li><a  href='./'>Home</a></li>
+        <li><a  href='./history'>History</a></li>
+      </ul> */}
     </header>
   )
 }
