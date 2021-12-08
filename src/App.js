@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useReducer } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { ChakraProvider } from '@chakra-ui/react';
+import { Center, Grid, GridItem } from '@chakra-ui/react';
 import axios from 'axios';
 import './App.scss';
 import Header from './components/header/index';
@@ -70,35 +71,39 @@ export default function App() {
         data: data
       };
       dispatch({ type: 'setHistoryAction', payload: obj });
-
+      
     }
     responseFunction();
   }, [state.requestParams], [state.data]);
-
+  
   let callApi = (requestParams) => {
     // setRequestParams(requestParams);
     dispatch({ type: 'setParamsAction', payload: requestParams });
   }
+  
+  let handleHistory = (historyData) => {
+    console.log(historyData);
+    dispatch({ type: 'setDataAction', payload: historyData });
+  }
 
   return (
-    <React.Fragment>
-      {/* <Router> */}
-        {/* <Switch>
-          <Route exact path="/">
-          </Route>
-          <Route path="/history">
-          </Route>
-        </Switch> */}
-        <Header />
-            <Form handleApiCall={callApi} />
-            {(goFlag || resultFlag) && <div data-testid='method' className='textDev'>Request Method: {state.requestParams.method}</div>}
-            {(goFlag || resultFlag) && <div className='textDev'>URL: {state.requestParams.url}</div>}
-            {(goFlag || resultFlag) && <div className='textDev'>Body: {state.requestParams.body}</div>}
-            <Results data={state.data} resultFlag={resultFlag} goFlag={goFlag} />
-            <History history={state.history} />
-        <Footer />
-      {/* </Router> */}
-
-    </React.Fragment >
+    <ChakraProvider color='#161616'>
+      <Header />
+      <Center style={{'margin-top':'30px'}} color='#161616'><Form handleApiCall={callApi} /></Center>
+      <Center>
+      <Grid templateColumns='repeat(3, 1fr)' gap={4} style={{'margin-top':'50px'}}>
+        <GridItem colSpan={1} h='100%' color='#161616' >
+          {(goFlag || resultFlag) && <div data-testid='method' className='textDev'><strong>Request Method:</strong> {state.requestParams.method}</div>}
+          {(goFlag || resultFlag) && <div className='textDev'><strong>URL:</strong> {state.requestParams.url}</div>}
+          {(goFlag || resultFlag) && <div className='textDev'><strong>Body:</strong> {state.requestParams.body}</div>}
+          {resultFlag && <History history={state.history} handleHistory={handleHistory}/>}
+        </GridItem>
+        <GridItem colSpan={2} h='100%' color='#161616'>
+          <Results data={state.data} resultFlag={resultFlag} goFlag={goFlag} />
+        </GridItem>
+      </Grid>
+      </Center>
+      <Footer />
+    </ChakraProvider >
   );
 }

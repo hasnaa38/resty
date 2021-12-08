@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react/cjs/react.development';
 import './form.scss';
+import { Button, Box } from '@chakra-ui/react';
+
 
 export default function Form(props) {
-  let {handleApiCall} = props;
+  let { handleApiCall } = props;
   let [method, setMethod] = useState('GET');
   let handleSubmit = (e) => {
     e.preventDefault();
     let body = 'no body'
-    if(method === 'POST' || method === 'PUT'){
+    if (method === 'POST' || method === 'PUT') {
       body = e.target.body.value;
     }
     let formData = {
@@ -19,9 +21,9 @@ export default function Form(props) {
     handleApiCall(formData);
   }
 
-  let handleClick=(e)=>{
-    document.getElementById(method).style.background = '#7a4949';
-    e.target.style.background = '#395e64';
+  let handleClick = (e) => {
+    document.getElementById(method).style.background = '#805AD5';
+    e.target.style.background = '#322659';
   }
 
   return (
@@ -30,15 +32,15 @@ export default function Form(props) {
         <label className='inputLabel'>
           <span data-testid='URL'>URL: </span>
           <input data-testid='URLinput' name='url' type='text' />
-          <button  data-testid='goButton' type='submit'>GO!</button>
+          <Box as='button' borderRadius='md' bg='teal.600' color='white' data-testid='goButton' type='submit'>GO!</Box>
         </label>
         <label className='methods'>
-          <span onClick={(e)=>{setMethod('GET'); handleClick(e)}} id='GET'>GET</span>
-          <span onClick={(e)=>{setMethod('POST'); handleClick(e)}} id='POST'>POST</span>
-          <span onClick={(e)=>{setMethod('PUT'); handleClick(e)}} id='PUT'>PUT</span>
-          <span onClick={(e)=>{setMethod('DELETE'); handleClick(e)}} id='DELETE'>DELETE</span>
+          <Box as='button' borderRadius='md' bg='purple.500' color='white' px={4} h={8} onClick={(e) => { setMethod('GET'); handleClick(e) }} id='GET'>GET</Box>
+          <Box as='button' borderRadius='md' bg='purple.500' color='white' px={4} h={8} onClick={(e) => { setMethod('POST'); handleClick(e) }} id='POST'>POST</Box>
+          <Box as='button' borderRadius='md' bg='purple.500' color='white' px={4} h={8} onClick={(e) => { setMethod('PUT'); handleClick(e) }} id='PUT'>PUT</Box>
+          <Box as='button' borderRadius='md' bg='purple.500' color='white' px={4} h={8} onClick={(e) => { setMethod('DELETE'); handleClick(e) }} id='DELETE'>DELETE</Box>
         </label>
-          {(method === 'POST' || method === 'PUT') && <textarea name='body' type='text' rows='4' cols='50'>JSON body</textarea>}
+        {(method === 'POST' || method === 'PUT') && <textarea name='body' type='text' rows='4' cols='50'>JSON body</textarea>}
       </form>
     </>
   )

@@ -54,10 +54,32 @@ The goal was to connect RESTy with actual APIs, running live requests.
 
 [Here](https://hasnaa38.github.io/resty/)
 
-I have been using this API for testing: [anapioficeandfire](https://anapioficeandfire.com/api/houses) and this to test other REST methods: [reqres](https://reqres.in/)
+This API has been for testing: [anapioficeandfire](https://anapioficeandfire.com/api/houses), and this to test other REST methods: [reqres](https://reqres.in/)
 
 Some results:
 
 ![get](./src/images/get.PNG)
 ![post](./src/images/post.PNG)
 ![delete](./src/images/delete.PNG)
+
+### Phase 4 <-Lab26-> - The useReducer() Hook
+
+The goal was to track every API call and storing it in history. This was done by adding a new state array called history where we store every call, then send this array to a `<History>` component that will render these calls.
+
+The page will render the previous method/url automatically as the user sends a new request. If the user clicks on the method button, the call response will be shown in the results area.
+
+### GitHub pages link
+
+[Here](https://hasnaa38.github.io/resty/)
+
+This API has been for testing:: [anapioficeandfire](https://anapioficeandfire.com/api/houses)
+
+Results:
+
+* Sending multiple requests:
+
+![history](./src/images/history1.PNG)
+
+* Reviewing request 1:
+
+![history body](./src/images/history2.PNG)

@@ -1,30 +1,33 @@
 'use strict';
+import './history.scss'
 import React, { useState } from 'react';
 import JSONPretty from 'react-json-pretty';
+import { Button } from '@chakra-ui/react';
 let JSONPrettyMon = require('react-json-pretty/dist/acai');
 
 function History(props) {
-    let { history } = props;
-    let[showResult, setShowResult] = useState(false);
+    let { history, handleHistory } = props;
+    let [showResult, setShowResult] = useState(false);
 
-    let handleResult = () => {
+    let handleResult = (element) => {
         setShowResult(true);
+        console.log(element);
+        handleHistory(element.data);
     }
 
     return (
-        <>
-            <div>History Tab</div>
+        <section>
+            <br/><br/><strong>History Tab</strong><br/><br/>
             {history ? history.map(element => {
                 return (
-                    <div>
-                        <button onClick={handleResult}><p>{element.requestParams.method}</p></button>
-                        <p>{element.requestParams.url}</p>
-                        <p>{element.requestParams.body}</p>
-                        {showResult && <JSONPretty id="json-pretty" data={element.data} theme={JSONPrettyMon}></JSONPretty>}
+                    <div >
+                        <Button colorScheme='teal' size='sm' onClick={() => handleResult(element)}>{element.requestParams.method}</Button>
+                        <br/><p><strong>URL: </strong>{element.requestParams.url}</p><br/>
+                        {/* {showResult && <JSONPretty id="json-pretty" data={element.data} theme={JSONPrettyMon}></JSONPretty>} */}
                     </div>
                 )
             }) : null}
-        </>
+        </section>
     )
 }
 export default History;

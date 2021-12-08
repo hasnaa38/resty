@@ -8,6 +8,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background: #161616 !important;
 }
 
 body {
@@ -25,8 +26,6 @@ body {
   
   .textDev{
     font-size: 15px;
-    margin-left: 15px;
-    padding-bottom: 10px;
     font-size: 16px;
     color: $white;
   }

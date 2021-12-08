@@ -5,13 +5,13 @@ $pink: #c19898;
 $white: #fff;
 
 pre{
-    font-size: 15px;
-    margin: 30px;
-    padding: 10px;
-    background: lighten($backgroundColor, 10);
-    overflow-x: hidden;
-
+  font-size: 15px;
+  padding: 10px;
+  overflow-x: hidden;
+  width: 60vw;
 }
+
+
 
 .dots-4 {
     width: 88px;
